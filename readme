@@ -1,0 +1,20 @@
+Hunter Gross
+ECE 331
+Project 2: datalogger
+
+This project takes data from the 331 expansion hat, formats it, and stores it in an SQLite database visible to the internet. The code to collect, format and store data was written in Python and the web server was set up with lighttpd.
+
+Database creation commands in sqlite3:
+
+create table sensor_data(time text, temp1 real, ir integer, fsi integer, vis integer, lux integer, temp2 integer, pressure integer, humid integer);
+.save database
+.quit
+
+Web page setup commands
+cd /etc/lighttpd
+sudo lighty-enable-mod cgi
+sudo lighty-enable-mod fastcgi
+sudo lighty-enable-mod fastcgi-php
+service lighttpd force-reload
+sudo systemctl start lighttpd
+
